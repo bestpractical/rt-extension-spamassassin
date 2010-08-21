@@ -42,9 +42,15 @@ RT::Extension::SpamAssassin - Spam filter for RT
     # in RT config
     Set(@Plugins, 'RT::Extension::SpamAssassin', ...other plugins...);
     Set(@MailPlugins, 'RT::Extension::SpamAssassin', ...other filters...);
+
+    # options here will be transfered to Mail::SpamAssassin's new method 
+    # as a hashref.
     Set(%SpamAssassinOptions, debug => ..., userprefs_filename => ...);
 
 =head1 DESCRIPTION
+
+It was RT::Interface::Email::Filter::SpamAssassin in RT core, when we
+removed it from core since 3.9, this plugin was born.
 
 This plugin checks to see if an incoming mail is spam (using
 C<spamassassin>) and if so, rewrites its headers. If the mail is very
